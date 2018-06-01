@@ -1,0 +1,21 @@
+document.addEventListener('DOMContentLoaded', -> {
+  canvas = document.querySelector('#board canvas')
+  ctx = canvas.getContext('2d')
+  w, h = canvas.width, canvas.height
+  
+  img = new Image()
+  img.src = `image_path 'snowflake.png'`
+  img.addEventListener('load', draw, false)
+
+  def draw
+    width, height = img.width, img.height
+
+    (0..100).each do |i|
+      x = Math.random() * w
+      y = Math.random() * h
+      scale = Math.random()
+
+      ctx.drawImage(img, x, y, width * scale, height * scale)
+    end
+  end
+})
